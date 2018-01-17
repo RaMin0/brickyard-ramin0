@@ -1,0 +1,23 @@
+source "https://rubygems.org"
+
+gem "rails", "5.1.4"
+gem "pg",    "~> 0.21.0"
+
+gem "puma",      "~> 3.11"
+gem "rack-cors", "~> 1.0"
+
+group :development, :test do
+  gem "byebug"
+end
+
+group :development do
+  gem "rubocop-rails", "~> 1.2"
+end
+
+group :test do
+  gem "database_cleaner",  "~> 1.6"
+  gem "factory_bot_rails", "~> 4.8"
+  gem "faker",             "~> 1.8"
+  gem "rspec-rails",       "~> 3.7"
+  gem "simplecov",         "~> 0.15.1", require: false
+end
