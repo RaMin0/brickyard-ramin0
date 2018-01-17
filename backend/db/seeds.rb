@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Seeding Assemblers..."
+puts "- Executive"
+Assembler.executives.create!(email: "executive@brickyard.eu")
+puts "- Assembler"
+Assembler.create!(email: "assembler@brickyard.eu")
