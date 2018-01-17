@@ -11,3 +11,7 @@ puts "- Executive"
 Assembler.executives.create!(email: "executive@brickyard.eu")
 puts "- Assembler"
 Assembler.create!(email: "assembler@brickyard.eu")
+
+puts "Seeding Vehicles..."
+puts "- DEMO"
+Vehicle.create!(code: "DEMO")
