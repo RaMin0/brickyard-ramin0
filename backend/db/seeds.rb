@@ -11,6 +11,11 @@ puts "- Executive"
 Assembler.executives.create!(email: "executive@brickyard.eu")
 puts "- Assembler"
 Assembler.create!(email: "assembler@brickyard.eu")
+puts "Seeding Vehicle States..."
+%w(Designed Assembled Painted Tested).each do |state|
+  puts "- #{state}"
+  VehicleState.create_with(name: state).find_or_create_by!(code: state.downcase.first)
+end
 
 puts "Seeding Vehicles..."
 puts "- DEMO"

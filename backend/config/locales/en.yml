@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  faker:
+    vehicle:
+      state:
+        - Designed
+        - Assembled
+        - Painted
+        - Tested
