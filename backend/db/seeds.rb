@@ -8,9 +8,10 @@
 
 puts "Seeding Assemblers..."
 puts "- Executive"
-Assembler.executives.create!(email: "executive@brickyard.eu")
+Assembler.executives.find_or_create_by!(email: "executive@brickyard.eu")
 puts "- Assembler"
-Assembler.create!(email: "assembler@brickyard.eu")
+Assembler.find_or_create_by!(email: "assembler@brickyard.eu")
+
 puts "Seeding Vehicle States..."
 %w(Designed Assembled Painted Tested).each do |state|
   puts "- #{state}"
@@ -19,4 +20,4 @@ end
 
 puts "Seeding Vehicles..."
 puts "- DEMO"
-Vehicle.create!(code: "DEMO")
+Vehicle.find_or_create_by!(code: "DEMO")

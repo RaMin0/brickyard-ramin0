@@ -1,32 +1,29 @@
 require "rails_helper"
 
 RSpec.describe Assembler, type: :model do
-  let(:valid_attributes) { attributes_for(:assembler) }
+  let(:custom_attributes) { nil }
 
-  subject { build(:assembler, attributes) }
+  subject(:assembler) { build(:assembler, custom_attributes) }
 
   context "with valid attributes" do
-    let(:attributes) { valid_attributes }
-
     it { should be_valid }
   end
 
   context "with missing email" do
-    let(:attributes) { valid_attributes.merge(email: nil) }
+    let(:custom_attributes) { { email: nil } }
 
     it { should_not be_valid }
   end
 
   context "with duplicate email" do
-    before { create(:assembler, valid_attributes) }
-
-    let(:attributes) { valid_attributes }
+    let(:another_assembler) { create(:assembler) }
+    let(:custom_attributes) { { email: another_assembler.email } }
 
     it { should_not be_valid }
   end
 
   context "with invalid email" do
-    let(:attributes) { valid_attributes.merge(email: "invalid") }
+    let(:custom_attributes) { { email: "invalid" } }
 
     it { should_not be_valid }
   end
