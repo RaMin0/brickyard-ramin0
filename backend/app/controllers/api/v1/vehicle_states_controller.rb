@@ -1,4 +1,6 @@
 class Api::V1::VehicleStatesController < Api::V1::BaseController
+  before_action -> { authorize! :executive }
+
   def index
     respond_with VehicleState.all
   end
