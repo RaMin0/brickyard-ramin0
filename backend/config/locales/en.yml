@@ -2,10 +2,3 @@ en:
   errors:
     messages:
       authentication_failed: failed to authenticate
-  faker:
-    vehicle:
-      state:
-        - Designed
-        - Assembled
-        - Painted
-        - Tested
