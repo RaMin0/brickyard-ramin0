@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Assembler, type: :model do
+describe Assembler, type: :model do
   let(:custom_attributes) { nil }
 
   subject(:assembler) { build(:assembler, custom_attributes) }

@@ -25,5 +25,7 @@ puts "Seeding Vehicle States..."
 end
 
 puts "Seeding Vehicles..."
-puts "- DEMO"
-Vehicle.find_or_create_by!(code: "DEMO")
+1.upto(5) do |i|
+  v = Vehicle.find_or_create_by!(code: "DEMO-#{i}")
+  puts "- #{v.code}"
+end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "auth", type: :request do
+describe "auth", type: :request do
   describe "login" do
     before { post api_v1_sessions_path, params: credentials }
 
