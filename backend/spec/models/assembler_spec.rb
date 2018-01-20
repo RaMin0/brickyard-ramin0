@@ -6,25 +6,25 @@ RSpec.describe Assembler, type: :model do
   subject(:assembler) { build(:assembler, custom_attributes) }
 
   context "with valid attributes" do
-    it { should be_valid }
+    it { is_expected.to be_valid }
   end
 
   context "with missing email" do
     let(:custom_attributes) { { email: nil } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   context "with duplicate email" do
     let(:another_assembler) { create(:assembler) }
     let(:custom_attributes) { { email: another_assembler.email } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   context "with invalid email" do
     let(:custom_attributes) { { email: "invalid" } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 end

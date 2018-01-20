@@ -9,20 +9,20 @@ describe Vehicle, type: :model do
   subject(:vehicle) { build(:vehicle, custom_attributes) }
 
   context "with valid attributes" do
-    it { should be_valid }
+    it { is_expected.to be_valid }
   end
 
   context "with missing code" do
     let(:custom_attributes) { { code: nil } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   context "with duplicate code" do
     let(:another_vehicle)   { create(:vehicle) }
     let(:custom_attributes) { { code: another_vehicle.code } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   context "with missing state" do
@@ -32,11 +32,11 @@ describe Vehicle, type: :model do
     subject { vehicle.state }
 
     it "should assign state" do
-      should be_present
+      is_expected.to be_present
     end
 
     it "should assign initial state" do
-      should eq(VehicleState.initial)
+      is_expected.to eq(VehicleState.initial)
     end
   end
 
@@ -50,7 +50,7 @@ describe Vehicle, type: :model do
       before { vehicle.state = vehicle_states.first }
 
       it "should advance state" do
-        should change { vehicle.state }.to(vehicle_states.second)
+        is_expected.to change { vehicle.state }.to(vehicle_states.second)
       end
     end
 
@@ -58,7 +58,7 @@ describe Vehicle, type: :model do
       before { vehicle.state = vehicle_states.last }
 
       it "should not advance state" do
-        should_not change { vehicle.state }
+        is_expected.not_to change { vehicle.state }
       end
     end
   end

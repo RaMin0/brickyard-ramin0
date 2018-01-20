@@ -10,25 +10,25 @@ describe Session, type: :model do
     subject { session.authenticate }
 
     context "with valid credentials" do
-      it { should eq(assembler) }
+      it { is_expected.to eq(assembler) }
     end
 
     context "with invalid email" do
       let(:credentials) { valid_credentials.merge(email: "invalid") }
 
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
 
     context "with invalid password" do
       let(:credentials) { valid_credentials.merge(password: "invalid") }
 
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
 
     context "with invalid credentials" do
       let(:credentials) { { email: "invalid", password: "invalid" } }
 
-      it { should be_nil }
+      it { is_expected.to be_nil }
     end
   end
 end

@@ -19,8 +19,8 @@ RSpec.describe "auth", type: :request do
           }
         }
 
-        it { should have_http_status(:success) }
-        it { should have_json_response(expected_json_response) }
+        it { is_expected.to have_http_status(:success) }
+        it { is_expected.to have_json_response(expected_json_response) }
       end
     end
 
@@ -34,8 +34,8 @@ RSpec.describe "auth", type: :request do
           }
         }
 
-        it { should have_http_status(:success) }
-        it { should have_json_response(expected_json_response) }
+        it { is_expected.to have_http_status(:success) }
+        it { is_expected.to have_json_response(expected_json_response) }
       end
     end
 
@@ -51,8 +51,8 @@ RSpec.describe "auth", type: :request do
         }
       }
 
-      it { should have_http_status(:unprocessable_entity) }
-      it { should have_json_response(expected_json_response) }
+      it { is_expected.to have_http_status(:unprocessable_entity) }
+      it { is_expected.to have_json_response(expected_json_response) }
     end
   end
 end

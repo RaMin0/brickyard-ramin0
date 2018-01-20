@@ -6,7 +6,7 @@ describe VehicleState, type: :model do
   subject(:vehicle_state) { build(:vehicle_state, custom_attributes) }
 
   context "with valid attributes" do
-    it { should be_valid }
+    it { is_expected.to be_valid }
   end
 
   context "with missing code" do
@@ -16,7 +16,7 @@ describe VehicleState, type: :model do
     subject { vehicle_state.code }
 
     it "should generate code" do
-      should be_present
+      is_expected.to be_present
     end
   end
 
@@ -24,12 +24,12 @@ describe VehicleState, type: :model do
     let(:another_vehicle_state) { create(:vehicle_state) }
     let(:custom_attributes) { { code: another_vehicle_state.code } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   context "with missing name" do
     let(:custom_attributes) { { name: nil } }
 
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 end
