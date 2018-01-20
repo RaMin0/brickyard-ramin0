@@ -1,10 +1,6 @@
 FactoryBot.define do
-  factory :assembler do
+  factory :session do
     email    Faker::Internet.email
     password Faker::Internet.password
-
-    trait :executive do
-      executive true
-    end
   end
 end

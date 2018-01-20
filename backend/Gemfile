@@ -3,9 +3,12 @@ source "https://rubygems.org"
 gem "rails", "5.1.4"
 gem "pg",    "~> 0.21.0"
 
-gem "acts_as_list", "~> 0.9.10"
-gem "puma",         "~> 3.11"
-gem "rack-cors",    "~> 1.0"
+gem "active_model_serializers", "~> 0.10.7"
+gem "acts_as_list",             "~> 0.9.10"
+gem "bcrypt",                   "~> 3.1"
+gem "responders",               "~> 2.4"
+gem "puma",                     "~> 3.11"
+gem "rack-cors",                "~> 1.0"
 
 group :development, :test do
   gem "byebug"

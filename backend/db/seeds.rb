@@ -7,10 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Seeding Assemblers..."
-puts "- Executive"
-Assembler.executives.find_or_create_by!(email: "executive@brickyard.eu")
-puts "- Assembler"
-Assembler.find_or_create_by!(email: "assembler@brickyard.eu")
+[
+  ["Executive", "executive", { password: "topsecret", executive: true }],
+  ["Assembler", "assembler", { password: "secret" }]
+].each do |(name, username, attrs)|
+  puts "- #{name}"
+  Assembler.create_with(attrs).find_or_create_by!(email: "#{username}@brickyard.eu").tap do |a|
+    puts "  * Email:    #{a.email}"
+    puts "  * Password: #{attrs[:password]}"
+  end
+end
 
 puts "Seeding Vehicle States..."
 %w(Designed Assembled Painted Tested).each do |state|
