@@ -6,6 +6,9 @@ class VehicleState < ApplicationRecord
   validates :code, :name, presence: true
   validates :code, uniqueness: true
 
+  # Relations
+  has_many :vehicles, foreign_key: :state_code, dependent: :restrict_with_error
+
   # Callbacks
   before_validation :generate_code, unless: :code?
 

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :vehicle_states, param: :code, except: :show
+
       resources :sessions, only: :create
     end
   end
