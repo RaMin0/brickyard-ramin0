@@ -1,4 +1,6 @@
 class Api::V1::VehicleStatesController < Api::V1::BaseController
+  skip_before_action :authenticate!
+
   def index
     respond_with VehicleState.all
   end
