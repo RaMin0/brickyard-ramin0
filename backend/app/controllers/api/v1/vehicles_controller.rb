@@ -1,5 +1,5 @@
 class Api::V1::VehiclesController < Api::V1::BaseController
-  skip_before_action :authenticate!
+  before_action -> { authorize! :executive }, only: [:create, :destroy]
 
   def index
     respond_with Vehicle.includes(:state)
