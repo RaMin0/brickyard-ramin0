@@ -1,42 +1,13 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
 import Layout from "../Layout";
+import { AuthenticatedComponent } from "../../utils/Auth";
 
-export default class extends Component {
-  renderNav() {
-    return (
-      <Link to="/dashboard/new" className="btn btn-primary">
-        Add
-      </Link>
-    );
-  }
-
+export default class extends AuthenticatedComponent {
   render() {
     return (
-      <Layout title="Dashboard" nav={this.renderNav()}>
-        <div className="table-responsive">
-          <table className="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <Layout title="Dashboard">
+        <pre className="alert alert-dark">{JSON.stringify(process.env)}</pre>
       </Layout>
     );
   }
