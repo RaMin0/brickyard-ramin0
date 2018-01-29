@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import tableDragger from "table-dragger";
 import _ from "lodash";
 
-import { AuthenticatedComponent } from "../../services/AuthService";
+import { AuthenticatedComponent, cant } from "../../services/AuthService";
 import Layout from "../Layout";
 import { VehicleStates } from "../../repository";
 import {
@@ -65,7 +65,11 @@ export default class extends AuthenticatedComponent {
 
   renderNav() {
     return (
-      <Link to={VEHICLE_STATES_NEW} className="btn btn-primary">
+      <Link
+        to={VEHICLE_STATES_NEW}
+        className="btn btn-primary"
+        hidden={cant("vehicle_state", "create")}
+      >
         Add
       </Link>
     );
@@ -82,6 +86,7 @@ export default class extends AuthenticatedComponent {
           <Link
             className="btn btn-sm btn-secondary mr-1"
             to={VEHICLE_STATES_EDIT.replace(":code", s.code)}
+            hidden={cant("vehicle_state", "update")}
           >
             Edit
           </Link>
@@ -90,6 +95,7 @@ export default class extends AuthenticatedComponent {
             href="/"
             data-toggle="modal"
             data-target={`#modal-delete-${s.code}`}
+            hidden={cant("vehicle_state", "destroy")}
           >
             Delete
           </a>
@@ -138,7 +144,10 @@ export default class extends AuthenticatedComponent {
     return (
       <Layout title="Vehicle States" nav={this.renderNav()}>
         <div className="table-responsive">
-          <div className="alert alert-primary">
+          <div
+            className="alert alert-primary"
+            hidden={!this.state.vehicleStates.length}
+          >
             <strong>PS:</strong> Drag and drop rows to reorder vehicle states.
           </div>
 
