@@ -56,7 +56,7 @@ export default class extends AuthenticatedComponent {
 
   render() {
     return (
-      <Layout title="Vehicle State / Add">
+      <Layout title="Vehicle States / Add">
         <form ref="form" onSubmit={e => this.handleSubmit(e)} noValidate>
           {this.renderField("name", "Name", "text", true)}
           {this.renderField("code", "Code", "text")}
