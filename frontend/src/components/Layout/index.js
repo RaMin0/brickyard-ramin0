@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import _ from "lodash";
 
 import Header from "./Header";
 import Sidebar from "./Sidebar";
@@ -7,6 +8,10 @@ import Main from "./Main";
 import "./styles.css";
 
 export default class extends Component {
+  componentDidMount() {
+    document.title = _.compact(["Brickyard", this.props.title]).join(" - ");
+  }
+
   render() {
     return (
       <div>

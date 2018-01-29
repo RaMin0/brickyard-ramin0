@@ -1,7 +1,7 @@
 import React from "react";
 
 import Layout from "../Layout";
-import { AuthenticatedComponent } from "../../utils/Auth";
+import { AuthenticatedComponent } from "../../services/AuthService";
 
 export default class extends AuthenticatedComponent {
   render() {

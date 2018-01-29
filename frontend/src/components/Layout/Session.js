@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
-import { logout, getAccessEmail } from "../../utils/Auth";
-import { LOGIN } from "../../utils/Routes";
+import { logout, getAccessEmail } from "../../services/AuthService";
+import { LOGIN } from "../../services/RoutesService";
 
 class Session extends Component {
   handleLogout(e) {

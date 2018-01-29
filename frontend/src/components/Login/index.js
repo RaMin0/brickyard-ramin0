@@ -1,9 +1,9 @@
 import React from "react";
 import qs from "qs";
 
-import { login, UnauthenticatedComponent } from "../../utils/Auth";
-import { humanizeErrors } from "../../utils/Helpers";
-import { ROOT } from "../../utils/Routes";
+import { login, UnauthenticatedComponent } from "../../services/AuthService";
+import { humanizeErrors } from "../../services/HelpersService";
+import { ROOT } from "../../services/RoutesService";
 
 import "./styles.css";
 
@@ -21,15 +21,17 @@ export default class extends UnauthenticatedComponent {
     };
   }
 
+  componentDidMount() {
+    document.title = "Brickyard";
+  }
+
   async handleSubmit(e) {
     e.preventDefault();
 
     this.setState({ error: null });
 
-    let email = this.refs.email.value;
-    let password = this.refs.password.value;
-
     try {
+      let { email, password } = this.state;
       await login(email, password);
 
       this.props.history.push(this.state.u ? this.state.u : ROOT);
@@ -37,6 +39,29 @@ export default class extends UnauthenticatedComponent {
       let error = humanizeErrors(ex.response.data.errors);
       this.setState({ error });
     }
+  }
+
+  renderField(ref, label, type, autoFocus = false) {
+    return (
+      <div>
+        <label htmlFor={ref} className="sr-only">
+          {label}
+        </label>
+        <input
+          type={type}
+          ref={ref}
+          className="form-control"
+          placeholder={label}
+          required
+          autoFocus={autoFocus}
+          onChange={e => {
+            this.setState({
+              [ref]: e.target.value
+            });
+          }}
+        />
+      </div>
+    );
   }
 
   render() {
@@ -49,33 +74,8 @@ export default class extends UnauthenticatedComponent {
             {this.state.error}
           </div>
 
-          <label htmlFor="email" className="sr-only">
-            Email
-          </label>
-          <input
-            type="email"
-            ref="email"
-            className="form-control"
-            placeholder="Email"
-            required
-            autoFocus
-            onChange={email => {
-              this.setState({ email });
-            }}
-          />
-          <label htmlFor="password" className="sr-only">
-            Password
-          </label>
-          <input
-            type="password"
-            ref="password"
-            className="form-control"
-            placeholder="Password"
-            required
-            onChange={password => {
-              this.setState({ password });
-            }}
-          />
+          {this.renderField("email", "Email", "email", true)}
+          {this.renderField("password", "Password", "password")}
 
           <button className="btn btn-lg btn-primary btn-block" type="submit">
             Login

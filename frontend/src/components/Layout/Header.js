@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import Session from "./Session";
-import { ROOT } from "../../utils/Routes";
+import { ROOT } from "../../services/RoutesService";
 
 export default class extends Component {
   render() {

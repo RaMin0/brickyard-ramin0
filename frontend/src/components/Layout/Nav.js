@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ROOT, VEHICLES } from "../../utils/Routes";
+import { ROOT, VEHICLES } from "../../services/RoutesService";
 
 export default class extends Component {
   render() {

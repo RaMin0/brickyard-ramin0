@@ -1,7 +1,7 @@
 import { Component } from "react";
 
-import Api from "./Api";
-import { LOGIN, ROOT } from "./Routes";
+import Api from "./ApiService";
+import { LOGIN, ROOT } from "./RoutesService";
 
 const ACCESS_TOKEN_KEY = "access_token";
 const ACCESS_EMAIL_KEY = "email";

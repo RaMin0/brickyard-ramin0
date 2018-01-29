@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Routes from "../../utils/Routes";
+import Routes from "../../services/RoutesService";
 
 import "./styles.css";
 

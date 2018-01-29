@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getAccessToken, getAccessEmail } from "./Auth";
+import { getAccessToken, getAccessEmail } from "./AuthService";
 
 function http() {
   return axios.create({
@@ -18,5 +18,17 @@ export default {
 
   getVehicles: async () => {
     return await http().get("vehicles");
+  },
+
+  postVehicles: async vehicle => {
+    return await http().post("vehicles", vehicle);
+  },
+
+  deleteVehicle: async id => {
+    return await http().delete(`vehicles/${id}`);
+  },
+
+  patchVehicleAdvanceState: async id => {
+    return await http().patch(`vehicles/${id}/advance_state`);
   }
 };
