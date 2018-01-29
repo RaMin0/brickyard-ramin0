@@ -1,0 +1,51 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:1.13.8-alpine
+    ports:
+      - '8080:80'
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - ./.docker/config/nginx.conf:/etc/nginx/conf.d/default.conf
+    # environment:
+    #   - VIRTUAL_HOST=app.docker
+    #   - VIRTUAL_PORT=80
+
+  frontend:
+    build: ./frontend
+    command: yarn start
+    ports:
+      - '5000'
+    volumes:
+      # - ./frontend:/app
+      - node_modules:/app/node_modules
+    environment:
+      - REACT_APP_API_BASE_URL=/api/v1
+
+  backend:
+    build: ./backend
+    command: bundle e rails s -b 0.0.0.0 -p 3000
+    ports:
+      - '3000'
+    depends_on:
+      - db
+    volumes:
+      # - ./backend:/app
+      - bundle:/usr/local/bundle
+      - db_data:/var/lib/postgresql/data
+
+  db:
+    image: postgres:10.1-alpine
+    ports:
+      - '5432'
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: app_dev
+
+volumes:
+  node_modules:
+  bundle:
+  db_data:
