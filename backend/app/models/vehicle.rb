@@ -9,6 +9,9 @@ class Vehicle < ApplicationRecord
   # Callbacks
   before_validation :assign_state, unless: :state_code?
 
+  # Scopes
+  default_scope -> { order(:created_at) }
+
   # Methods
   def advance_state!
     update(state: next_state) if can_advance_state?

@@ -17,7 +17,7 @@ class Api::V1::VehiclesController < Api::V1::BaseController
     @vehicle = Vehicle.find(params[:id])
 
     if @vehicle.advance_state!
-      head :no_content
+      respond_with @vehicle
     else
       head :unprocessable_entity
     end
