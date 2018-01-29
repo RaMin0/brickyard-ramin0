@@ -10,3 +10,11 @@ body,
   justify-content: center;
   height: 100%;
 }
+
+.sindu_dragger table {
+  background: transparent !important;
+}
+
+table.sindu_origin_table {
+  user-select: none;
+}

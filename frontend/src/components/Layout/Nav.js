@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ROOT, VEHICLES } from "../../services/RoutesService";
+import { ROOT, VEHICLES, VEHICLE_STATES } from "../../services/RoutesService";
 
 export default class extends Component {
   render() {
@@ -13,6 +13,10 @@ export default class extends Component {
 
         <NavLink to={VEHICLES} className="nav-link">
           Vehicles
+        </NavLink>
+
+        <NavLink to={VEHICLE_STATES} className="nav-link">
+          Vehicle States
         </NavLink>
       </li>
     ];

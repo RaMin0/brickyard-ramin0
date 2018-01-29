@@ -30,5 +30,25 @@ export default {
 
   patchVehicleAdvanceState: async id => {
     return await http().patch(`vehicles/${id}/advance_state`);
+  },
+
+  getVehicleStates: async () => {
+    return await http().get("vehicle_states");
+  },
+
+  getVehicleState: async code => {
+    return await http().get(`vehicle_states/${code}`);
+  },
+
+  postVehicleStates: async vehicle_state => {
+    return await http().post("vehicle_states", vehicle_state);
+  },
+
+  patchVehicleState: async (code, vehicle_state) => {
+    return await http().patch(`vehicle_states/${code}`, vehicle_state);
+  },
+
+  deleteVehicleState: async code => {
+    return await http().delete(`vehicle_states/${code}`);
   }
 };
