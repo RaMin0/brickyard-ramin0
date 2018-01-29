@@ -1,4 +1,4 @@
-# Brickyard RaMin0
+# Brickyard RaMin0 - Backend
 
 The vehicle production factory.
 
@@ -73,7 +73,7 @@ The API calls allowed against the app can be tried out using [PostMan](https://w
 
 ## Future Improvements
 
-* Add specs for serializers
+* Add specs for serializers.
 
 ## Getting in Touch
 
