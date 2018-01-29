@@ -1,6 +1,10 @@
+require:
+  - rubocop/rspec/focused
 inherit_gem:
   rubocop-rails:
     - config/rails.yml
 
+RSpec/Focused:
+  Enabled: true
 Style/FrozenStringLiteralComment:
   Enabled: false
