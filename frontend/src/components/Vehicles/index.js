@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 
-import { AuthenticatedComponent } from "../../services/AuthService";
+import { AuthenticatedComponent, cant } from "../../services/AuthService";
 import Layout from "../Layout";
 import { Vehicles } from "../../repository";
 import { VEHICLES_NEW } from "../../services/RoutesService";
@@ -53,7 +53,11 @@ export default class extends AuthenticatedComponent {
 
   renderNav() {
     return (
-      <Link to={VEHICLES_NEW} className="btn btn-primary">
+      <Link
+        to={VEHICLES_NEW}
+        className="btn btn-primary"
+        hidden={cant("vehicle", "create")}
+      >
         Add
       </Link>
     );
@@ -79,7 +83,7 @@ export default class extends AuthenticatedComponent {
           <a
             className="btn btn-sm btn-warning mr-1"
             href="/"
-            hidden={!v.next_state}
+            hidden={cant("vehicle", "advance_state") || !v.next_state}
             onClick={e => this.handleNextState(e, v)}
           >
             Next State &rarr;
@@ -89,6 +93,7 @@ export default class extends AuthenticatedComponent {
             href="/"
             data-toggle="modal"
             data-target={`#modal-delete-${v.id}`}
+            hidden={cant("vehicle", "destroy")}
           >
             Delete
           </a>
